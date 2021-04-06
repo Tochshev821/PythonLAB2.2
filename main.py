@@ -1,10 +1,8 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from io import BytesIO
-from urllib.request import urlretrieve
 from selenium.webdriver.common.keys import Keys
 import time
-import subprocess
+
 
 
 
@@ -23,22 +21,25 @@ def print_hi(name):
     soup = BeautifulSoup(html_page, 'html5lib')
     table = soup.findChildren('table')
     my_table = table[len(table)-1]
-    # получение тегов и печать значений
+
     rows = my_table.findChildren(['th', 'tr'])
+    print("VVEDITE DEN NEDELI")
+    a=int(input())
     for row in rows:
+        i = -1
         cells = row.findChildren('td')
         for cell in cells:
             value = cell.text
-            print(value)
-    # soup = BeautifulSoup(html_page, 'html5lib')
-    # table = soup.findChildren('table')
-    # my_table = table[0]
-    # rows = my_table.findChildren(['th', 'tr'])
-    # for row in rows:
-    #     cells = row.findChildren('td')
-    #     for cell in cells:
-    #         value = cell.text
-    #         print(value)
+            i += 1
+            if a < 7 and a > 0:
+
+                if i == 0:
+                    print(value)
+
+                if i == a:
+                    print(value)
+            else:
+                print("sth wrong")
 
 if __name__ == '__main__':
     print_hi('PyCharm')
